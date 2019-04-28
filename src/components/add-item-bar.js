@@ -9,14 +9,16 @@ export default class AddItemBar extends AbstractComponent {
 
   get template() {
     return `<form class="add-item-bar">
-    <input type="text" placeholder="add item" class="add-item-bar__item" name="text" required>
-    <label for="colored">colored</label>
-    <input class="add-item-bar__checkbox" id="colored" type="checkbox" placeholder="add item" name="colored"></input>
-    <div class="add-item-bar__color-picker">
-      <label><input type="radio" name="color" value="green">green</input></label>
-      <label><input type="radio" name="color" value="red">red</input></label>
+    <input type="text" placeholder="add new item" class="add-item-bar__text" name="text" required>
+    <div class="add-item-bar__controls">
+      <label for="colored">colored</label>
+      <input class="add-item-bar__checkbox" id="colored" type="checkbox" placeholder="add item" name="colored"></input>
+      <div class="add-item-bar__color-picker">
+        <label><input type="radio" name="color" value="green">green</input></label>
+        <label><input type="radio" name="color" value="red">red</input></label>
+      </div>
+      <button class="add-item-bar__button">Add Item</button>
     </div>
-    <button class="add-item-bar__button">Add Item</button>
   </form>`;
   }
 

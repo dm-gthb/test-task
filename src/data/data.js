@@ -1,6 +1,6 @@
 import {getRandomArrayElement, getRandomArrayElements, getRandomNum} from '../util';
 
-const TEXT_BLOCKS_QUANTITY = 10;
+const TEXT_BLOCKS_QUANTITY = 5;
 const MIN_TEXT_CONTENT = 1;
 const MAX_TEXT_CONTENT = 2;
 const TYPES = ['simple', 'colored'];

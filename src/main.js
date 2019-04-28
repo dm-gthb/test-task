@@ -1,12 +1,12 @@
 import {textBlocksData} from './data/data';
 import TextBlockColored from './components/text-block-colored';
 import TextBlockSimple from './components/text-block-simple';
+import Modal from './components/modal';
 import StatusBar from './components/status-bar';
 import AddItemBar from './components/add-item-bar';
 import {debounce} from './util';
 
 const containerElement = document.querySelector('.container');
-const statisticsElement = containerElement.querySelector('.statistics');
 const textBlocksContainerElement = containerElement.querySelector('.text-blocks');
 const findIndexById = (array, id) => {
   const index = array.findIndex((item) => {
@@ -84,9 +84,19 @@ const renderNewItem = (dataItem) => {
     };
     
     textColoredComponent.onDelete = (id) => {
-      textBlocksData[findIndexById(textBlocksData, id)] = null;
-      textColoredComponent.unrender();
-      updateStatusDisplay(textBlocksData);
+      const popupComponent = new Modal();
+      document.body.appendChild(popupComponent.render());
+
+      popupComponent.onAgree = () => {
+        textBlocksData[findIndexById(textBlocksData, id)] = null;
+        textColoredComponent.unrender();
+        popupComponent.unrender();
+        updateStatusDisplay(textBlocksData);
+      }
+
+      popupComponent.onDisagree = () => {
+        popupComponent.unrender();
+      }
     };
 
   } else {
@@ -117,7 +127,7 @@ const renderNewItem = (dataItem) => {
 let initId = 0;
 
 const statusBarComponent = new StatusBar(getStatistics(textBlocksData));
-statisticsElement.appendChild(statusBarComponent.render());
+containerElement.insertBefore(statusBarComponent.render(), containerElement.firstChild);
 
 const addItemComponent = new AddItemBar();
 containerElement.appendChild(addItemComponent.render());
@@ -135,6 +145,7 @@ addItemComponent.onSubmit = (data) => {
 
   textBlocksData.push(newItemData);
   renderNewItem(newItemData);
+  updateStatusDisplay(textBlocksData);
 }
 
 const renderTextBlocks = (data) => {

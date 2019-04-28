@@ -16,19 +16,19 @@ export default class StatusBar extends AbstractComponent {
     const {all, highlighted, green, red} = this._state;
     return `<div class="status">
     <div class="status__item">
-      <h3>All</h3>
+      <h3>all</h3>
       <span>${all}</span>
     </div>
     <div class="status__item">
-      <h3>Highlighted</h3>
+      <h3>highlighted</h3>
       <span>${highlighted}</span>
     </div>
-    <div class="status__item">
-      <h3>Highlighted green</h3>
+    <div class="status__item status__item--green">
+      <h3>highlighted green</h3>
       <span>${green}</span>
     </div>
-    <div class="status__item">
-      <h3>Highlighted red</h3>
+    <div class="status__item status__item--red">
+      <h3>highlighted red</h3>
       <span>${red}</span>
     </div>
   </div>`;
