@@ -1,0 +1,22 @@
+{
+  "name": "test-task",
+  "version": "1.0.0",
+  "private": true,
+  "author": "Dmitry Mamonov",
+  "scripts": {
+    "eslint": "eslint src/**/*.js",
+    "test": "npm run eslint",
+    "build": "webpack",
+    "start": "webpack-dev-server --open"
+  },
+  "devDependencies": {
+    "babel-eslint": "10.0.1",
+    "eslint": "5.13.0",
+    "webpack": "4.29.5",
+    "webpack-cli": "3.2.3",
+    "webpack-dev-server": "3.2.0"
+  },
+  "engines": {
+    "node": "10"
+  }
+}
